@@ -20,10 +20,10 @@ Publications
 -  Osma Suominen and Christian Mader: Assessing and Improving the
    Quality of SKOS Vocabularies. Journal on Data Semantics, vol. 3, no.
    1, pp. 47-73, June, 2014
-   (`PDF <https://seco.cs.aalto.fi/publications/2014/suominen-mader-skosquality.pdf>`_)
+   (`PDF <https://seco.cs.aalto.fi/publications/2014/suominen-mader-skosquality.pdf>`__)
 
 -  Osma Suominen and Eero Hyvönen: Improving the Quality of SKOS
    Vocabularies with Skosify. Proceedings of the 18th International
    Conference on Knowledge Engineering and Knowledge Management (EKAW
    2012), Springer-Verlag, Galway, Ireland, October, 2012
-   (`PDF <https://seco.cs.aalto.fi/publications/2012/suominen-hyvonen-skosify-2012.pdf>`_)
+   (`PDF <https://seco.cs.aalto.fi/publications/2012/suominen-hyvonen-skosify-2012.pdf>`__)
