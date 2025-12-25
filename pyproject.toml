@@ -1,0 +1,140 @@
+[build-system]
+requires = ["hatchling>=1.27", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+# Storing project metadata in pyproject.toml https://peps.python.org/pep-0621/
+name = "skosify"
+description = "SKOS converter for RDFS/OWL/SKOS vocabularies."
+authors = [
+  {name = "Osma Suominen", email = "osma.suominen@helsinki.fi"},
+]
+license = "MIT"
+license-files = [ "LICENSE" ]
+readme = "README.rst"
+requires-python = ">=3.9"
+
+keywords = ["SKOS", "vocabulary", "RDF"]
+
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+
+dependencies = [
+  "rdflib",
+  "tomli>=1.1.0; python_version < '3.11'",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/NatLibFi/Skosify"
+Documentation = "http://skosify.readthedocs.io/"
+Changelog = "https://github.com/NatLibFi/Skosify/blob/master/CHANGELOG.rst"
+
+[project.optional-dependencies]
+tests = [
+  "pytest",
+  "pytest-flake8",
+  "pytest-cov",
+]
+docs = [
+  "sphinx",
+  "sphinx-rtd-theme",
+]
+dev = [
+    # Recursively including the project's own optional dependencies requires pip>=21.2
+    "skosify[tests,docs]",
+    "hatch",
+]
+
+[project.scripts]
+skosify = "skosify.cli:main"
+
+[tool.hatch.metadata]
+# Hatch disallows direct references for dependencies by default.
+# We need to enable them to allow installing NFDI4Cat's vocexcel from github.
+allow-direct-references = true
+
+# Build targets for hatch are defined as sections within tool.hatch.build.targets:
+[tool.hatch.build.targets.sdist]
+include = [
+  "/skosify",
+  "LICENSE",
+  "CHANGELOG.rst",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["skosify"]
+
+# integrates git-tag-based versions into hatch, https://github.com/ofek/hatch-vcs
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "skosify/_version.py"
+
+[tool.pytest.ini_options]
+# pytest configuration:
+# https://docs.pytest.org/en/stable/customize.html
+
+# Sets directories to be searched for tests.
+testpaths = [
+  "test",
+ ]
+
+# Directories that are not visited by pytest collector:
+norecursedirs = "dist build .tox .git .cache __pycache__ .venv"
+
+# Execute doctests in classes, functions, and test modules (pytest)
+addopts = [
+    "-ra",  # show extra summary info for skipped, failed, etc. tests
+    "-v",   # verbose
+    "--strict-config",   # Raise an error instead of a warning for pytest config issues
+    "--strict-markers",  # Treat typos in function markers as an error
+    "--flake8",          # Run flake8 checks
+    "--cov=skosify",     # Coverage for skosify
+    "--cov-report=xml",  # XML coverage report
+    "--cov-report=term-missing",  # Terminal report with missing lines
+    "--tb=short",        # short traceback format
+    "--durations=10",    # Show 10 slowest tests
+    "--durations-min=1.0",      # Only show tests >1s
+]
+
+[tool.coverage.run]
+# https://coverage.readthedocs.io/en/latest/config.html
+branch = true
+parallel = true
+source_pkgs = ["skosify"]
+omit = [
+    "**/skosify/_version.py",
+]
+
+[tool.coverage.paths]
+# Specify where coverage schould look for source files.
+source = [
+    "skosify",
+]
+
+[tool.coverage.report]
+# Show in report which lines are not covered
+show_missing = false
+# Any line of the source code that matches one of these regexes is excluded
+# from being reported as missing.
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "return NotImplemented",
+    "if __name__ == .__main__.:",
+]

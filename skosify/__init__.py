@@ -1,7 +1,16 @@
-# encoding=utf-8
+from importlib.metadata import PackageNotFoundError, version
+
 from .skosify import skosify
 from .config import config
 from . import infer, check
 
-__version__ = '2.3.0'  # Use bumpversion to update
 __all__ = ['skosify', 'config', 'infer', 'check']
+
+try:
+    __version__ = version("skosify")
+except PackageNotFoundError:  # pragma: no cover
+    # package is not installed
+    try:
+        from ._version import version as __version__
+    except ImportError:
+        __version__ = "0.0.0"
