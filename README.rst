@@ -1,7 +1,7 @@
 .. image:: https://badge.fury.io/py/skosify.svg
    :target: https://badge.fury.io/py/skosify.svg    
-.. image:: https://travis-ci.org/NatLibFi/Skosify.svg?branch=master
-   :target: https://travis-ci.org/NatLibFi/Skosify
+.. image:: https://github.com/NatLibFi/Skosify/workflows/CI/badge.svg
+   :target: https://github.com/NatLibFi/Skosify/actions
 .. image:: https://readthedocs.org/projects/skosify/badge/?version=latest
    :target: http://skosify.rtfd.io/ 
 .. image:: https://codecov.io/gh/NatLibFi/Skosify/branch/master/graph/badge.svg
@@ -18,7 +18,7 @@ the SKOS specification and related best practices.
 Installation
 ============
 
-Skosify requires Python 3.6+.
+Skosify requires Python 3.6+ (but tests are run only for officially maintained versions, 3.10 to 3.14).
 
 .. code-block:: console
 
