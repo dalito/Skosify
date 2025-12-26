@@ -1,5 +1,3 @@
-# encoding=utf8
-
 import sys
 import time
 import logging
@@ -18,6 +16,7 @@ from .rdftools import (
     localname
 )
 
+from skosify import __version__ as version
 from .config import Config
 from . import infer, check
 
@@ -742,7 +741,7 @@ def skosify(*sources, **config):
     literalmap = config.literals
     relationmap = config.relations
 
-    logging.debug("Skosify starting. $Revision$")
+    logging.debug("Skosify %s starting.", version)
     starttime = time.time()
 
     logging.debug("Phase 1: Parsing input files")

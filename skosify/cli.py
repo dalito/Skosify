@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 """Provides skosify as command line client."""
 
+from skosify import __version__ as version
 from skosify import skosify
 from .rdftools import write_rdf
 from .config import Config
@@ -17,7 +17,7 @@ def get_option_parser(defaults):
     # process command line parameters
     # e.g. skosify yso.owl -o yso-skos.rdf
     usage = "Usage: %prog [options] voc1 [voc2 ...]"
-    parser = optparse.OptionParser(usage=usage)
+    parser = optparse.OptionParser(usage=usage, version='v%s' % version)
     parser.set_defaults(**defaults)
     parser.add_option('-c', '--config', type='string',
                       help='Read default options '
