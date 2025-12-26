@@ -18,11 +18,31 @@ the SKOS specification and related best practices.
 Installation
 ============
 
-Skosify requires Python 3.6+ (but tests are run only for officially maintained versions, 3.10 to 3.14).
+Skosify requires Python 3.9+.
+
+If you only want to use the command line interface it is suggested to install
+with [uv tool](https://docs.astral.sh/uv/concepts/tools/) 
+or [pipx](https://pypa.github.io/pipx/). 
+Both simplify installing and managing python command line applications.
+
+.. code-block:: console
+
+    uv tool install skosify
+
+
+or
+
+.. code-block:: console
+
+    pipx install skosify
+
+
+Of course you also use pip to install as for any other Python package.
 
 .. code-block:: console
 
     pip install --upgrade skosify
+
 
 Usage
 =====
@@ -79,6 +99,7 @@ Author and Contributors
 -  Jakob Voß
 -  Dan Michael O. Heggø
 -  Alex Kourijoki
+-  David Linke
 
 See also
 ========
