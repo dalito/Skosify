@@ -9,3 +9,9 @@ updates:
   directory: "/"
   schedule:
     interval: "monthly"
+  cooldown:
+    default-days: 5
+  groups:
+    github-actions:
+      patterns:
+        - "*"
