@@ -21,8 +21,8 @@ Installation
 Skosify requires Python 3.9+.
 
 If you only want to use the command line interface it is suggested to install
-with [uv tool](https://docs.astral.sh/uv/concepts/tools/) 
-or [pipx](https://pypa.github.io/pipx/). 
+with `uv tool <https://docs.astral.sh/uv/concepts/tools/>`_ 
+or `pipx <https://pypa.github.io/pipx/>`_. 
 Both simplify installing and managing python command line applications.
 
 .. code-block:: console
@@ -43,6 +43,34 @@ Of course you also use pip to install as for any other Python package.
 
     pip install --upgrade skosify
 
+
+To help testing locally with multiple Python versions, a 
+`tox <https://tox.wiki/>`_ configuration file is provided (tox.ini).
+
+.. code-block:: console
+
+    uv tool install tox
+
+Execute `tox` in the root of the repo to run the full set of tests.
+Optionally just run specific environments, for example only Python 3.12:
+
+.. code-block:: console
+
+    tox -e py312
+
+The package can be built locally with any PEP517-conform build tool, for example 
+`build <https://pypi.org/project/build/>`_, 
+`uv build <https://docs.astral.sh/uv/concepts/build-backend/>`_
+or `hatch <https://pypi.org/project/hatch/>`_.
+Of course, you need to have the build tool installed. 
+For example, to use hatch as in gh-actions, run:
+
+.. code-block:: console
+
+    uvx hatch build
+
+This command uses `uvx <https://docs.astral.sh/uv/guides/tools/>`_
+to run hatch with out installing it permanently.
 
 Usage
 =====
